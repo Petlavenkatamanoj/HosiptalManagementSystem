@@ -1,4 +1,4 @@
-package hosiptalmanagementsystem.doctor;
+package hospitalmanagementsystem.doctor;
 
 public class Doctor {
     private String name;

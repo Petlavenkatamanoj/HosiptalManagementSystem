@@ -1,4 +1,4 @@
-package hosiptalmanagementsystem.doctor;
+package hospitalmanagementsystem.doctor;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

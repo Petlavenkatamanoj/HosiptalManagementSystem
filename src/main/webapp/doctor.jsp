@@ -1,22 +1,56 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ include file="header.jsp" %>
+<jsp:include page="navbar.jsp" />
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Doctor</title>
-</head>
+<title>Add Doctor</title></head>
 <body>
-     <form action="doctor" method="get">
-      Enter a Name:<input type="text" name="name">
-      Enter a Gender:<input type="text" name="gender" >
-      Enter a phone:<input type="text" name="phone" >
-      Enter a City:<input type="text" name="city" >
-      Enter a Email:<input type="text" name="email">
-      Enter a age:<input type="number" name="age">
-      Enter a Address:<input type="text" name="address">
-      Enter a Qualification:<input type="text" name="qualification">
-      <input type="submit">
-     </form>
-
+<div class="container mt-4">
+  <h2>Add Doctor</h2>
+  <form action="doctor" method="get" class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" name="name" required>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Gender</label><br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" value="Male" checked>
+        <label class="form-check-label">Male</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" value="Female">
+        <label class="form-check-label">Female</label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Phone</label>
+      <input type="text" class="form-control" name="phone" required>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">City</label>
+      <input type="text" class="form-control" name="city" required>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" name="email" required>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Age</label>
+      <input type="number" class="form-control" name="age" required>
+    </div>
+    <div class="col-12">
+      <label class="form-label">Address</label>
+      <textarea class="form-control" name="address"></textarea>
+    </div>
+    <div class="col-12">
+      <label class="form-label">Qualification</label>
+      <input type="text" class="form-control" name="qualification">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Add Doctor</button>
+    </div>
+  </form>
+</div>
 </body>
 </html>
