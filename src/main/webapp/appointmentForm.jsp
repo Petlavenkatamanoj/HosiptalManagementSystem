@@ -1,6 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="header.jsp" %>
 <jsp:include page="navbar.jsp" />
+<%
+String role = (String) session.getAttribute("role");
+if (role == null || !role.equals("admin")) {
+    response.sendRedirect("adminLogin.jsp");
+}
+%>
+
 <html>
 <head>
     <title>Schedule Appointment</title>

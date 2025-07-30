@@ -13,7 +13,10 @@
         <li class="nav-item"><a class="nav-link" href="appointmentForm.jsp">Schedule Appointment</a></li>
         <li class="nav-item"><a class="nav-link" href="searchDoctor.jsp">Search Doctor</a></li>
         <li class="nav-item"><a class="nav-link" href="searchPatient.jsp">Search Patient</a></li>
-        <li class="nav-item"><a class="nav-link text-warning" href="logout.jsp">Logout</a></li>
+        <li class="nav-item">
+            <a class="nav-link text-danger" href="logout">Logout</a>
+        </li>
+
       </ul>
     </div>
   </div>

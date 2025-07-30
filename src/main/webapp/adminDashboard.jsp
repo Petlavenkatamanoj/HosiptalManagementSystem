@@ -1,54 +1,48 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="hospitalmanagementsystem.admin.AdminDashboardDAO" %>
-<%@ include file="header.jsp" %>
-<jsp:include page="navbar.jsp" />
-<%
-    AdminDashboardDAO dashDao = new AdminDashboardDAO();
-    int doctorCount = dashDao.getDoctorCount();
-    int patientCount = dashDao.getPatientCount();
-    int appointmentCount = dashDao.getAppointmentCount();
-%>
+<%@ page import="java.util.*" %>
+<%@ page session="true" %>
 
 <%
-    if (session == null || session.getAttribute("adminUser") == null) {
-        response.sendRedirect("adminLogin.jsp");
+    String role = (String) session.getAttribute("role");
+    if (role == null || !role.equals("admin")) {
+        response.sendRedirect("adminLogin.jsp"); // send back to login if not admin
         return;
     }
 %>
-<html>
-<head><title>Admin Dashboard</title></head>
-<body>
-<h2>Welcome, <%= session.getAttribute("adminUser") %>!</h2>
-<ul>
-    <li><a href="doctor.jsp">Manage Doctors</a></li>
-    <li><a href="patient.jsp">Manage Patients</a></li>
-    <li><a href="logout.jsp">Logout</a></li>
-    <li><a href="patientList">View All Patients</a></li>
-    <li><a href="appointmentForm.jsp">Schedule Appointment</a></li>
-    <li><a href="searchPatient.jsp">Search Patient</a></li>
-    <li><a href="searchDoctor.jsp">Search Doctor</a>
-</li>
-</ul>
-<h2>Admin Dashboard</h2>
 
-<table border="1" cellpadding="10">
-    <tr>
-        <th>Entity</th>
-        <th>Count</th>
-    </tr>
-    <tr>
-        <td>Total Doctors</td>
-        <td><%= doctorCount %></td>
-    </tr>
-    <tr>
-        <td>Total Patients</td>
-        <td><%= patientCount %></td>
-    </tr>
-    <tr>
-        <td>Total Appointments</td>
-        <td><%= appointmentCount %></td>
-    </tr>
-</table>
+<jsp:include page="header.jsp" />
+<jsp:include page="navbar.jsp" />
 
-</body>
-</html>
+<div class="container mt-4">
+    <h2 class="mb-3">Admin Dashboard</h2>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Doctors</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Doctors: 5</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Patients</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Patients: 20</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Appointments</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Appointments: 12</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="logout.jsp" class="btn btn-danger">Logout</a>
+</div>

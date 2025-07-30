@@ -1,9 +1,17 @@
 <!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
+  <!-- Default welcome page -->
   <welcome-file-list>
     <welcome-file>adminDashboard.jsp</welcome-file>
   </welcome-file-list>
+
+  <!-- Session timeout after 15 minutes of inactivity -->
+  <session-config>
+    <session-timeout>15</session-timeout>
+  </session-config>
+
 </web-app>

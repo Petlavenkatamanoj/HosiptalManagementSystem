@@ -25,6 +25,9 @@ public class AdminLoginServlet extends HttpServlet {
         if (dao.login(username, password)) {
             HttpSession session = req.getSession();
             session.setAttribute("adminUser", username);
+
+            session.setAttribute("role", "admin");
+
             res.sendRedirect("adminDashboard.jsp");
         } else {
             res.sendRedirect("adminLogin.jsp?error=invalid");
