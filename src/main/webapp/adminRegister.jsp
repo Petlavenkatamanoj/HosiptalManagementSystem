@@ -4,35 +4,61 @@
 <html>
 <head>
     <title>Admin Registration</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h2>Register Admin</h2>
+<body class="bg-light">
 
-    <%
-        String error = request.getParameter("error");
-        if ("username_exists".equals(error)) {
-    %>
-        <p style="color:red;">Username already exists.</p>
-    <%
-        } else if ("insert_failed".equals(error)) {
-    %>
-        <p style="color:red;">Failed to insert admin. Try again.</p>
-    <%
-        } else if ("exception".equals(error)) {
-    %>
-        <p style="color:red;">Something went wrong during registration. Try again.</p>
-    <% } %>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
 
-    <form action="AdminRegisterServlet" method="post">
-        <label for="username">Username:</label>
-        <input type="text" name="username" required><br><br>
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Register Admin</h4>
+                </div>
+                <div class="card-body">
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" required><br><br>
+                    <%
+                        String error = request.getParameter("error");
+                        if ("username_exists".equals(error)) {
+                    %>
+                        <div class="alert alert-danger">Username already exists.</div>
+                    <%
+                        } else if ("insert_failed".equals(error)) {
+                    %>
+                        <div class="alert alert-danger">Failed to insert admin. Try again.</div>
+                    <%
+                        } else if ("exception".equals(error)) {
+                    %>
+                        <div class="alert alert-danger">Something went wrong during registration. Try again.</div>
+                    <% } %>
 
-        <input type="submit" value="Register">
-    </form>
+                    <form action="AdminRegisterServlet" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control" required>
+                        </div>
 
-    <p>Already have an account? <a href="adminLogin.jsp">Login here</a>.</p>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+
+                </div>
+                <div class="card-footer text-center">
+                    <p>Already have an account? <a href="adminLogin.jsp">Login here</a>.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (optional, for components like modals) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
