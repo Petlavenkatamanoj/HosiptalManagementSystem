@@ -1,15 +1,24 @@
-<!DOCTYPE web-app PUBLIC
-        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
 
-<web-app>
-
-  <!-- Default welcome page -->
   <welcome-file-list>
-    <welcome-file>adminDashboard.jsp</welcome-file>
+    <welcome-file>adminRegister.jsp</welcome-file>
   </welcome-file-list>
 
-  <!-- Session timeout after 15 minutes of inactivity -->
+  <servlet>
+    <servlet-name>AdminRegisterServlet</servlet-name>
+    <servlet-class>hospitalmanagementsystem.admin.AdminRegisterServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AdminRegisterServlet</servlet-name>
+    <url-pattern>/AdminRegisterServlet</url-pattern>
+  </servlet-mapping>
+
   <session-config>
     <session-timeout>15</session-timeout>
   </session-config>
