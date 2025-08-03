@@ -1,31 +1,55 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ include file="header.jsp" %>
-<jsp:include page="navbar.jsp" />
-<%
-String role = (String) session.getAttribute("role");
-if (role == null || !role.equals("admin")) {
-    response.sendRedirect("adminLogin.jsp");
-}
-%>
-
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Schedule Appointment</title>
+    <title>Book Appointment</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<h2>Schedule Appointment</h2>
-<form action="appointment" method="post">
-    Doctor ID: <input type="number" name="doctor_id" required><br><br>
-    Patient ID: <input type="number" name="patient_id" required><br><br>
-    Date: <input type="date" name="date" required><br><br>
-    Time: <input type="time" name="time" required><br><br>
-    Status:
-    <select name="status">
-        <option>Scheduled</option>
-        <option>Completed</option>
-        <option>Cancelled</option>
-    </select><br><br>
-    <input type="submit" value="Schedule">
-</form>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="card shadow-lg rounded">
+        <div class="card-header bg-primary text-white">
+            <h3 class="text-center">Book Appointment</h3>
+        </div>
+        <div class="card-body">
+            <form action="addAppointment" method="post">
+                <div class="mb-3">
+                    <label for="doctorId" class="form-label">Doctor ID</label>
+                    <input type="number" class="form-control" name="doctorId" id="doctorId" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="patientId" class="form-label">Patient ID</label>
+                    <input type="number" class="form-control" name="patientId" id="patientId" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="date" class="form-label">Appointment Date</label>
+                    <input type="date" class="form-control" name="date" id="date" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="time" class="form-label">Appointment Time</label>
+                    <input type="time" class="form-control" name="time" id="time" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select" name="status" id="status">
+                        <option value="Scheduled">Scheduled</option>
+                        <option value="Pending">Pending</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

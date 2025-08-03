@@ -1,33 +1,34 @@
 package hospitalmanagementsystem.appointment;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.*;
 import jakarta.servlet.http.*;
-
+import jakarta.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet("/appointment")
+@WebServlet("/addAppointment")
 public class AppointmentServlet extends HttpServlet {
-    private AppointmentDAO dao;
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int doctorId = Integer.parseInt(request.getParameter("doctorId"));
+        int patientId = Integer.parseInt(request.getParameter("patientId"));
+        String date = request.getParameter("date");
+        String time = request.getParameter("time");
+        String status = request.getParameter("status");
 
-    public void init() {
-        dao = new AppointmentDAO();
-    }
+        Appointment appointment = new Appointment();
+        appointment.setDoctorId(doctorId);
+        appointment.setPatientId(patientId);
+        appointment.setDate(date);
+        appointment.setTime(time);
+        appointment.setStatus(status);
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse res)
-            throws ServletException, IOException {
-        Appointment appt = new Appointment();
-        appt.setDoctorId(Integer.parseInt(req.getParameter("doctor_id")));
-        appt.setPatientId(Integer.parseInt(req.getParameter("patient_id")));
-        appt.setDate(req.getParameter("date"));
-        appt.setTime(req.getParameter("time"));
-        appt.setStatus(req.getParameter("status"));
+        AppointmentDAO dao = new AppointmentDAO();
+        boolean result = dao.addAppointment(appointment);
 
-        int result = dao.addAppointment(appt);
-        if (result > 0) {
-            res.sendRedirect("appointmentSuccess.jsp");
+        if (result) {
+            RequestDispatcher rd = request.getRequestDispatcher("appointmentSuccess.jsp");
+            rd.forward(request, response);
         } else {
-            res.getWriter().println("Failed to add appointment");
+            response.getWriter().println("Failed to schedule appointment. Try again.");
         }
     }
 }

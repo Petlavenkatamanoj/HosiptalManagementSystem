@@ -9,7 +9,6 @@ public class Appointment {
     private String time;
     private String status;
 
-    // Getters and Setters
     public int getAppointmentId() { return appointmentId; }
     public void setAppointmentId(int appointmentId) { this.appointmentId = appointmentId; }
 
